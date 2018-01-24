@@ -30,16 +30,21 @@ class Album extends Component {
       },
       durationchange: e => {
         this.setState({ duration: this.audioElement.duration });
+      },
+      volumechange: e => {
+        this.setState({ volume: this.audioElement.volume });
       }
     };
     this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+    this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
   }
 
   componentWillUnmount() {
     this.audioElement.src = null;
     this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+    this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
   }
   
 
@@ -57,6 +62,10 @@ class Album extends Component {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
   } 
+
+  formatTime(seconds){
+   return seconds ? `${Math.floor(seconds/60)}:${Number(seconds % 60 / 100).toFixed(2).substr(2,3)}`: '-:--';
+  }
 
   handleSongClick(song) {
     const isSameSong = this.state.currentSong === song; /*????*/
@@ -86,8 +95,14 @@ class Album extends Component {
 
   handleTimeChange(e) {
     const newTime = this.audioElement.duration * e.target.value;
-    this.audioElement.currentTime = newTime;
+    this.audioElement.currentTime = newTime; /*??*/
     this.setState({ currentTime: newTime });
+  }
+
+  handleVolumeChange(e){
+    const newState = {'volume': e.target.value };
+    this.audioElement.volume = newState.volume;
+    this.setState(newState);
   }
 
   render() {
@@ -131,10 +146,13 @@ class Album extends Component {
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}S
+          handleTimeChange={(e) => this.handleTimeChange(e)}
+          formatTime={(time) => this.formatTime(time)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}
         />
       </section>
     );
   }
 }
+
 export default Album;
