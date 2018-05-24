@@ -1,21 +1,16 @@
 {
-  "name": "bloc-jams-react",
+  "name": "bloc-jams_react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "ajv": "^6.5.0",
-    "eslint-plugin-flowtype": "^2.46.3",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.8.2",
+    "bootstrap": "^4.0.0-beta.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "0.9.5"
-  },
-  "devDependencies": {
-    "service-worker-loader": "^2.1.0",
-    "webpack": "^2.7.0"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
