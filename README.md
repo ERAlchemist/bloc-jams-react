@@ -12,15 +12,12 @@ A streaming music web app built with ReactJS
 
 <hr>
 To run locally: <br>
-<code>
-	<pre>
-		$ git clone https://github.com/ERAlchemist/bloc-jams-react.git
+<code><pre>
+	$ git clone https://github.com/ERAlchemist/bloc-jams-react.git
 
-		$ cd bloc-jams-react
+	$ cd bloc-jams-react
 
-		$ npm install
+	$ npm install
 
-		$ npm start
-</pre>
-	</code>
+	$ npm start</pre></code>
 This project was built as part of [Bloc's Web Development Program](https://Bloc.io)
